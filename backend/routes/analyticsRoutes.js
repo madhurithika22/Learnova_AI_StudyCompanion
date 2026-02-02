@@ -5,5 +5,6 @@ const auth = require('../middleware/auth');
 
 router.use(auth);
 router.get('/reports', analyticsController.getReports);
+router.get('/download-report', analyticsController.downloadReport);
 
 module.exports = router;

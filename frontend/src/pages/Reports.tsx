@@ -57,8 +57,21 @@ export default function Reports() {
 
   const calculatedAvg = (parseFloat(totalHours) / 7).toFixed(1);
 
-  const handleDownload = () => {
-    alert("PDF download would be triggered here!");
+  const handleDownload = async () => {
+    try {
+      const response = await axios.get('/api/analytics/download-report', {
+        responseType: 'blob',
+      });
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `Learnova_Report_${new Date().toISOString().split('T')[0]}.txt`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } catch (error) {
+      console.error("Download failed:", error);
+    }
   };
 
   return (
@@ -144,7 +157,10 @@ export default function Reports() {
                       backgroundColor: "hsl(var(--card))",
                       border: "1px solid hsl(var(--border))",
                       borderRadius: "8px",
+                      color: "hsl(var(--foreground))"
                     }}
+                    itemStyle={{ color: "hsl(var(--foreground))" }}
+                    labelStyle={{ color: "hsl(var(--muted-foreground))" }}
                   />
                   <Bar dataKey="hours" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
                 </BarChart>
@@ -180,7 +196,10 @@ export default function Reports() {
                       backgroundColor: "hsl(var(--card))",
                       border: "1px solid hsl(var(--border))",
                       borderRadius: "8px",
+                      color: "hsl(var(--foreground))"
                     }}
+                    itemStyle={{ color: "hsl(var(--foreground))" }}
+                    labelStyle={{ color: "hsl(var(--muted-foreground))" }}
                   />
                 </PieChart>
               </ResponsiveContainer>
@@ -214,7 +233,10 @@ export default function Reports() {
                     backgroundColor: "hsl(var(--card))",
                     border: "1px solid hsl(var(--border))",
                     borderRadius: "8px",
+                    color: "hsl(var(--foreground))"
                   }}
+                  itemStyle={{ color: "hsl(var(--foreground))" }}
+                  labelStyle={{ color: "hsl(var(--muted-foreground))" }}
                 />
                 <Line
                   type="monotone"

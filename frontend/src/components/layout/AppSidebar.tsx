@@ -29,6 +29,7 @@ const navItems = [
   { title: "Smart Schedule", url: "/schedule", icon: Calendar },
   { title: "Rewards", url: "/rewards", icon: Trophy },
   { title: "Reports", url: "/reports", icon: BarChart3 },
+  { title: "Notifications", url: "/notifications", icon: Sparkles },
   { title: "Profile", url: "/profile", icon: User },
 ];
 
@@ -47,7 +48,7 @@ export function AppSidebar() {
             <Sparkles className="w-6 h-6 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="font-bold text-lg text-sidebar-foreground">Lernova</h1>
+            <h1 className="font-bold text-lg text-sidebar-foreground">Learnova</h1>
             <p className="text-xs text-muted-foreground">Smart learning, perfectly timed</p>
           </div>
         </div>
@@ -58,9 +59,9 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {navItems.map((item) => {
-                const isActive = location.pathname === item.url || 
+                const isActive = location.pathname === item.url ||
                   (item.url !== "/dashboard" && location.pathname.startsWith(item.url));
-                
+
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>

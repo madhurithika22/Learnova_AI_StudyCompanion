@@ -47,8 +47,15 @@ exports.getSmartDashboard = async (req, res) => {
 
     try {
       const aiResponse = await getAIPlan(user, subjects, enrichedTopics);
+      const getGreeting = () => {
+        const hour = new Date().getHours();
+        if (hour < 12) return "Good Morning";
+        if (hour < 17) return "Good Afternoon";
+        return "Good Evening";
+      };
+
       res.json({
-        greeting: `Optimized by ${aiResponse.provider}`,
+        greeting: getGreeting(),
         schedule: aiResponse.schedule,
         aiInsight: aiResponse.aiInsight || "Your schedule is ready."
       });
@@ -66,7 +73,7 @@ exports.getSmartDashboard = async (req, res) => {
       }));
 
       res.json({
-        greeting: "Safe Mode",
+        greeting: "Hello",
         schedule: fallbackSchedule,
         aiInsight: "AI providers are busy. Using a standard priority queue."
       });

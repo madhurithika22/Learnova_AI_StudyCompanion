@@ -8,6 +8,7 @@ const subjectRoutes = require('./routes/subjectRoutes');
 const scheduleRoutes = require('./routes/scheduleRoutes');
 const userRoutes = require('./routes/userRoutes');
 const analyticsRoutes = require('./routes/analyticsRoutes');
+const notificationRoutes = require('./routes/notificationRoutes');
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,7 @@ app.use('/api/subjects', subjectRoutes);
 app.use('/api/schedule', scheduleRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/notifications', notificationRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

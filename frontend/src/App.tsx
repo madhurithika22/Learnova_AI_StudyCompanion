@@ -9,11 +9,13 @@ import { UserProvider } from "@/contexts/UserContext";
 // Layouts
 import { AppLayout } from "@/components/layout/AppLayout";
 import { AuthLayout } from "@/components/layout/AuthLayout";
-import {ProtectedRoute} from "@/components/auth/ProtectedRoute";
+import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 
 // Auth Pages
 import SignIn from "@/pages/SignIn";
 import SignUp from "@/pages/SignUp";
+
+import Notifications from "@/pages/Notifications";
 
 // App Pages
 import Dashboard from "@/pages/Dashboard";
@@ -45,16 +47,17 @@ const App = () => (
 
               {/* App Routes */}
               <Route element={<ProtectedRoute />}>
-              <Route element={<AppLayout />}>
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/subjects" element={<Subjects />} />
-                <Route path="/subjects/add" element={<AddSubject />} />
-                <Route path="/subjects/:id" element={<SubjectDetail />} />
-                <Route path="/schedule" element={<SmartSchedule />} />
-                <Route path="/rewards" element={<Rewards />} />
-                <Route path="/reports" element={<Reports />} />
-                <Route path="/profile" element={<Profile />} />
-              </Route>
+                <Route element={<AppLayout />}>
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/subjects" element={<Subjects />} />
+                  <Route path="/subjects/add" element={<AddSubject />} />
+                  <Route path="/subjects/:id" element={<SubjectDetail />} />
+                  <Route path="/schedule" element={<SmartSchedule />} />
+                  <Route path="/rewards" element={<Rewards />} />
+                  <Route path="/reports" element={<Reports />} />
+                  <Route path="/notifications" element={<Notifications />} />
+                  <Route path="/profile" element={<Profile />} />
+                </Route>
               </Route>
 
               {/* Redirects & Fallback */}

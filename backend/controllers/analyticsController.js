@@ -79,3 +79,30 @@ exports.getReports = async (req, res) => {
         res.status(500).json({ message: "Failed to fetch reports" });
     }
 };
+
+exports.downloadReport = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const subjects = await Subject.find({ userId });
+
+        // Simple text report generation
+        let reportContent = `Learnova Study Report\nGenerated on: ${new Date().toLocaleString()}\n\n`;
+        reportContent += `Subject Progress:\n-----------------\n`;
+
+        subjects.forEach(subject => {
+            reportContent += `${subject.name}: ${subject.progress}%\n`;
+            if (subject.examDate) {
+                reportContent += `  Exam Date: ${new Date(subject.examDate).toLocaleDateString()}\n`;
+            }
+            reportContent += `\n`;
+        });
+
+        res.setHeader('Content-disposition', 'attachment; filename=report.txt');
+        res.setHeader('Content-type', 'text/plain');
+        res.send(reportContent);
+
+    } catch (error) {
+        console.error("Download Error:", error);
+        res.status(500).json({ message: "Download failed" });
+    }
+};
