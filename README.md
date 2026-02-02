@@ -1,105 +1,122 @@
-# Learnova : AI Study Companion with Smart Topic Scheduling
+# Learnova: AI-Powered Smart Study Planner
 
-## Objective
-Design a study planner app that uses AI to auto-prioritize topics based on exam dates, difficulty levels, and learning history for effective revision scheduling.
-
----
-
-## Technologies
-
-### Frontend
-*   **React + TailwindCSS**: For a modern, responsive, and dynamic user interface.
-*   **Redux Toolkit**: For efficient state management across the application.
-*   **Vite**: For fast build tooling and development environment.
-
-### Backend
-*   **Express.js**: For a robust and scalable RESTful API.
-*   **JWT Auth**: For secure, stateless user authentication.
-*   **MongoDB**: For flexible data storage of user profiles, subjects, and study history.
-
-### AI Features
-*   **Topic Prioritization**: Algorithms that weight topics based on upcoming exam deadlines and historical performance.
-*   **Smart Study Schedule Generator**: Automatically creates balanced study plans to maximize retention.
-*   **Revision Reminders**: Implements spaced repetition logic to ensure long-term memory retention.
+Learnova is a production-grade educational productivity platform designed to transform how students prepare for exams. By leveraging agentic AI logic, Learnova analyzes subject complexity, topic density, and exam timelines to generate high-efficiency, personalized study schedules.
 
 ---
 
-## Core Requirements
+## Live Demo and Deployment
 
-### 1. User Authentication
-*   Secure Login/Signup functionality.
-*   Password hashing and JWT token management.
-*   User onboarding for subject preferences and study habits.
+**Live URL:**  
+Insert your Vercel deployment link here
 
-### 2. Study Plan Management
-*   **Subject & Topic Management**: Intuitive interface to add subjects and break them down into granular topics.
-*   **Status Tracking**: Mark topics as "New", "Learning", or "Revised" to track progress visually.
-*   **Exam Integrations**: Set specific exam dates to trigger the urgency algorithms.
-
-### 3. AI Topic Scheduling
-*   **Smart Recommendation Engine**: Suggests the optimal study order based on:
-    *   Time remaining until exam.
-    *   Topic complexity/difficulty level.
-    *   Last studied date (Spaced Repetition).
-*   **Urgency Alerts**: Highlights overdue or critical topics that require immediate attention.
-
-### 4. Dashboard
-*   **Visual Analytics**: Charts and graphs displaying weekly activity, current subject progress, and overall readiness.
-*   **Daily Suggestions**: AI-curated list of what to focus on today.
-*   **Exam Countdown**: Prominent reminders of upcoming deadlines.
+**Frontend:** React / Next.js  
+**Backend:** Node.js / Express  
+**Deployment Platform:** Vercel (CI/CD via GitHub)
 
 ---
 
-## Setup Guide
+## Key Features
+
+### AI Smart Scheduling
+Uses LLM-based logic to prioritize study topics based on difficulty level, urgency, and available time before exams.
+
+### Dynamic Subject Management
+Provides full CRUD operations for subjects, topics, difficulty levels, and exam dates.
+
+### Automated Time Blocking
+Generates structured daily study sessions with intelligent break placement and revision intervals.
+
+### Responsive Dashboard
+Modern, mobile-first dashboard designed for seamless usage across devices.
+
+### Secure Authentication
+JWT-based authentication using a secure `learnova_token` to ensure data privacy and user isolation.
+
+---
+
+## AI Tools and Technologies Used
+
+### Generative AI (OpenAI / Gemini)
+Powers the intelligent scheduling engine and converts structured academic data into optimized study plans.
+
+### Lovable
+Used for rapid frontend prototyping and UI component architecture.
+
+### Vercel
+Cloud infrastructure for frontend hosting and automated deployment pipelines.
+
+### Axios
+Handles asynchronous communication between the frontend and backend APIs.
+
+---
+
+## System Architecture Overview
+
+Learnova follows a modern MERN-style full-stack architecture with a dedicated AI orchestration layer.
+
+### Client Layer
+- Next.js application
+- Handles UI rendering, routing, and state management
+- Communicates with backend via REST APIs
+
+### Server Layer
+- Node.js with Express.js
+- Manages authentication, business logic, and API routing
+
+### AI Intelligence Layer
+- Processes subject difficulty, deadlines, and analytics
+- Generates structured JSON-based study schedules using LLMs
+
+### Database Layer
+- MongoDB for persistent storage
+- Stores user profiles, subjects, topics, schedules, and analytics data
+
+---
+
+## Setup and Installation
 
 ### Prerequisites
-*   Node.js (v18+)
-*   MongoDB (Local or Atlas)
-*   API Keys for LLM Providers (Gemini, Groq, or OpenAI)
-
-### Installation
-
-1.  **Clone the Repository**
-    ```bash
-    git clone <repository-url>
-    cd learnova
-    ```
-
-2.  **Backend Setup**
-    ```bash
-    cd backend
-    npm install
-    
-    # Configure Environment Variables
-    # Create a .env file with:
-    # MONGO_URI=your_mongodb_uri
-    # JWT_SECRET=your_secret_key
-    # GEMINI_API_KEY=your_key
-    
-    npm run dev
-    ```
-
-3.  **Frontend Setup**
-    ```bash
-    cd frontend
-    npm install
-    npm run dev
-    ```
-
-4.  **Access the Application**
-    *   Frontend: `http://localhost:5173`
-    *   Backend: `http://localhost:5000`
+- Node.js version 18.0 or higher
+- npm or yarn
+- Valid AI API key (OpenAI or Gemini)
 
 ---
 
-## AI Scheduling Logic
+1. Clone the Repository
 
-The core scheduler utilizes a weighted scoring system to rank topics:
+```bash
+git clone https://github.com/your-username/learnova.git
+cd learnova
+```
 
-1.  **Urgency Score**: Calculated inversely proportional to days remaining until the exam.
-2.  **Difficulty Multiplier**: Higher weighting for topics marked as complex.
-3.  **Decay Factor**: Increases the score for topics not studied recently (Simulating the Forgetting Curve).
+2. Install Dependencies
+npm install
 
-**Final Rank** = `(Urgency Score x Difficulty Multiplier) + Decay Factor`
+3. Environment Configuration
 
-This ensures users are always focused on the most critical material at the right time.
+Create a .env file in the root directory (refer to .env.example):
+
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+AI_API_KEY=your_ai_api_key
+JWT_SECRET=your_jwt_secret
+
+4. Run the Application Locally
+npm run dev
+
+Deployment Steps
+1. Connect GitHub to Vercel
+
+Link the repository through the Vercel dashboard.
+
+2. Configure Environment Variables
+
+Add all variables from the .env file to Vercel’s Environment Variables section.
+
+3. Deploy
+
+Vercel will automatically detect the Next.js framework and build the application.
+
+4. Continuous Integration
+
+Every push to the main branch triggers an automatic redeploy via CI/CD.
