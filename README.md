@@ -7,8 +7,7 @@ Learnova is a production-grade educational productivity platform designed to tra
 ## Live Demo and Deployment
 
 **Live URL:**  
-[Learnova AI](https://learnova-ai-study-
-companion.vercel.app?_vercel_share=xHWJ6jTTPu2sx4mFm6inZuKv2k47SdpN)
+https://learnova-ai-study-companion.vercel.app?_vercel_share=xHWJ6jTTPu2sx4mFm6inZuKv2k47SdpN
 
 **Frontend:** React 
 **Backend:** Express.js
