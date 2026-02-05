@@ -39,8 +39,6 @@ JWT-based authentication using a secure `learnova_token` to ensure data privacy 
 ### Generative AI (OpenAI / Gemini)
 Powers the intelligent scheduling engine and converts structured academic data into optimized study plans.
 
-### Lovable
-Used for rapid frontend prototyping and UI component architecture.
 
 ### Vercel
 Cloud infrastructure for frontend hosting and automated deployment pipelines.
